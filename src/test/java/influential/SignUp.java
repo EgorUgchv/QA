@@ -10,13 +10,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Random;
 
 public class SignUp {
 
     @Test
-    public void signUp(){
+    public void signUp() throws URISyntaxException {
         System.setProperty("webdriver.chrome.driver", "src/main/drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Keys enter = Keys.ENTER;
@@ -65,7 +67,9 @@ public class SignUp {
         driver.findElement(By.xpath("//div[@class = 'custom-control custom-checkbox custom-control-inline']/label[@for = 'hobbies-checkbox-1']")).click();
 
         WebElement upld = driver.findElement(By.id("uploadPicture"));
-        String filePath = "TestImage.png";
+        String path = new File(SignUp.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath();
+        System.out.println(path);
+        String filePath = path + "/TestImage.png";
         upld.sendKeys(filePath);
 
         driver.findElement(By.id("currentAddress")).sendKeys("Kazan");
