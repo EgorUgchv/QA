@@ -65,7 +65,7 @@ public class SignUp {
         driver.findElement(By.xpath("//div[@class = 'custom-control custom-checkbox custom-control-inline']/label[@for = 'hobbies-checkbox-1']")).click();
 
         WebElement upld = driver.findElement(By.id("uploadPicture"));
-        String filePath = "C:\\Users\\egoru\\Downloads\\TestImage.png";
+        String filePath = "TestImage.png";
         upld.sendKeys(filePath);
 
         driver.findElement(By.id("currentAddress")).sendKeys("Kazan");
